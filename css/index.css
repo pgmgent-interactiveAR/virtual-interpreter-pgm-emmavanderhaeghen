@@ -1,0 +1,82 @@
+*{
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  max-width: 500px;
+  height: 98vh;
+  z-index: 10;
+}
+
+textarea {
+  background-color: hsla(257, 52%, 19%, 0.8);
+  border-radius: 1rem;
+  padding: 0.5rem;  
+  color: #f2efe2;
+  font-size: 1rem;
+  width: 100%;
+}
+
+span {
+  background-color: hsl(258, 29%, 62%);
+  border-radius: 1rem;
+  padding: .25rem 1rem;
+  color: #f2efe2;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.controls {
+  background-color: hsla(257, 52%, 19%, 0.8);
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.icon {
+  width: 4rem;
+  height: 4rem;
+  color: white;
+}
+
+button {
+  font-weight: 600;
+  border: none;
+  border-radius: 5rem;
+  margin: 0 1rem;
+  width: 4rem;
+  height: 4rem;
+}
+
+.primary-btn {
+  background-color: hsla(258, 29%, 62%, 1);
+  color: #f2efe2;
+}
+
+.secondary-btn {
+  background-color: #c72b57;
+  color: #f2efe2;
+}
+
+button:focus {
+    outline: 0;
+}
+
+.hidden {
+  display: none;
+}
