@@ -1,166 +1,27 @@
-let SpeechRecognition = window.webkitSpeechRecognition;
+const App = {
+  init() {
+    this.cacheElements();
+    this.addEventListener();
+  },
 
-/* instantiation speech recognition interface */
-let recognition = new SpeechRecognition();
-recognition.continuous = false;
+  cacheElements() {
+    // this.handModel = document.querySelector('#hand-model');
+    // this.instructions = document.querySelector('#instructions');
+    this.textBox = document.querySelector('#text-box');
 
-/* text display */
-let Textbox = $('#textbox');
-let instructions = $('.instructions');
-let Content = '';
+    this.startBtn = document.querySelector('#start-btn');
+    this.stopBtn = document.querySelector('#stop-btn');
+    this.textBtn = document.querySelector('#text-btn');
+    this.cross = document.querySelector('.cross');
+  },
 
-/* speech to text conversion = continuous */
-recognition.continuous = true;
-
-/* hold all values of speech converted to text */
-recognition.onresult = function(event) {
-  let current = event.resultIndex;
-  let transcript = event.results[current][0].transcript;
-    Content += transcript;
-    Textbox.val(Content);
-    playAnimation(transcript);
+  addEventListener() {
+    // add event listener to the text box
+    this.textBtn.addEventListener('click', () => {
+      this.textBox.classList.toggle('hidden')
+      this.cross.classList.toggle('hidden')
+    })
+  },
 };
 
-recognition.onstart = function() { 
-  instructions.text('Voice recognition is ON.');
-}
-
-recognition.onspeechend = function() {
-  instructions.text('No activity. Click play and start again.');
-}
-
-recognition.onerror = function(event) {
-  if(event.error == 'no-speech') {
-    instructions.text('Try again.');  
-  }
-}
-
-/* start listening on button click */
-$('#start-btn').on('click', function(e) {
-  if (Content.length) {
-    Content += ' ';
-  }
-  recognition.start();
-});
-
-/* stop listening on button click */
-$('#stop-btn').on('click', function(e) {
-  recognition.stop();
-  instructions.text('Voice recognition is stopped.');
-})
-
-const animationList = [
-  { 
-    anitmationName: "hello",
-  },
-  {
-    anitmationName: "goodbye",
-  },
-  {
-    anitmationName: "thank you",
-    position: "0 -2 -3",
-    rotation: "100 180 0"  
-  }
-];
-
-function playAnimation(transcript) {
-  if (["hello", "hallo", "Hello", "Hallo"].includes(transcript)) {
-    console.log("hello");
-    document.getElementById("hand").setAttribute("visible", true);
-    document.getElementById("hand").setAttribute("animation-mixer", "clip: hello; timeScale: 1; loop: once; clampWhenFinished: true");
-  } else if (["goodbye", "Goodbye", "bye", "Bye"].includes(transcript)) {
-    console.log("goodbye");
-    document.getElementById("hand").setAttribute("visible", true);
-    document.getElementById("hand").setAttribute("animation-mixer", "clip: goodbye; timeScale: -1; loop: once; clampWhenFinished: true");
-  } else if (["thank you", "Thank you", "thanks", "Thanks"].includes(transcript)) {
-    console.log("thank you");
-    document.getElementById("hand").setAttribute("visible", true);
-    document.getElementById("hand").setAttribute("animation-mixer", "clip: thankyou; timeScale: -1; loop: once; clampWhenFinished: true");
-  } 
-}
-
-
-/* switch case between animations depending on the text */
-// function playAnimation(transcript) {
-//   const $hand = document.getElementById("hand");
-
-//   switch (transcript) {
-//     case ["hello", "hallo", "Hello", "Hallo"]:
-//       $hand.setAttribute("visible", true);
-//       $hand.setAttribute("animation-mixer", "clip: hello; timeScale: 1; loop: once; clampWhenFinished: true");
-//     break;
-
-//     case ["goodbye", "Goodbye", "bye", "Bye"]:
-//         $hand.setAttribute("visible", true);
-//         $hand.setAttribute("animation-mixer", "clip: goodbye; timeScale: -1; loop: once; clampWhenFinished: true");
-//     break;  
-
-//     case ["thank you", "Thank you", "thanks", "Thanks"]:
-//       $hand.setAttribute("visible", true);
-//       $hand.setAttribute("animation-mixer", "clip: thankyou; timeScale: -1; loop: once; clampWhenFinished: true");
-//     break;  
-
-//     case ["sorry", "Sorry"]:
-//       $hand.setAttribute("visible", true);
-//       $hand.setAttribute("animation-mixer", "clip: sorry; timeScale: -1; loop: once; clampWhenFinished: true");
-//     break;  
-
-//     case ["yes", "Yes"]:
-//       $hand.setAttribute("visible", true);
-//       $hand.setAttribute("animation-mixer", "clip: yes; timeScale: -1; loop: once; clampWhenFinished: true");
-//     break;  
-
-//     default:
-//     break;
-//   }
-// }
-
-
-
-
-
-
-
-
-
-/* copy text to clipboard */
-function copyText() {
-  let copyText = document.getElementById("textbox");
-  copyText.select();
-  document.execCommand("copy");
-  alert("Copied the text: " + copyText.value);
-}
-
-/* clear text */
-function clearText() {
-  document.getElementById("textbox").
-  value = "";
-}
-
-/* save text to file */
-function saveTextAsFile() {
-  let textToWrite = document.getElementById("textbox").value;
-  let textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
-  let fileNameToSaveAs = "myNewFile.txt";
-
-  let downloadLink = document.createElement("a");
-  downloadLink.download = fileNameToSaveAs;
-  downloadLink.innerHTML = "Download File";
-  if (window.webkitURL != null)
-  {
-    // Chrome allows the link to be clicked
-    // without actually adding it to the DOM.
-    downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-  }
-  else
-  {
-    // Firefox requires the link to be added to the DOM
-    // before it can be clicked.
-    downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-    downloadLink.onclick = destroyClickedElement;
-    downloadLink.style.display = "none";
-    document.body.appendChild(downloadLink);
-  }
-
-  downloadLink.click();
-}
+App.init();
