@@ -14,5 +14,8 @@
   "bugs": {
     "url": "https://github.com/pgmgent-interactiveAR/virtual-interpreter-pgm-emmavanderhaeghen/issues"
   },
-  "homepage": "https://github.com/pgmgent-interactiveAR/virtual-interpreter-pgm-emmavanderhaeghen#readme"
+  "homepage": "https://github.com/pgmgent-interactiveAR/virtual-interpreter-pgm-emmavanderhaeghen#readme",
+  "dependencies": {
+    "openssl": "^2.0.0"
+  }
 }
