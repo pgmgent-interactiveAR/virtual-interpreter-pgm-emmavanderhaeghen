@@ -73,17 +73,17 @@ function handAnimations(transcript) {
     handModel.setAttribute('animation-mixer', 'clip: thankyou; timeScale: -1; loop: infinite; clampWhenFinished: true');
   } 
 
-  else if (['Sorry', 'sorry'].includes(transcript)) {
-    console.log('sorry');
+  else if (['Peace', 'peace'].includes(transcript)) {
+    console.log('peace');
     console.log(handModel);
     handModel.setAttribute('visible', true);
-    handModel.setAttribute('animation-mixer', 'clip: sorry; timeScale: -1; loop: infinite; clampWhenFinished: true');
+    handModel.setAttribute('animation-mixer', 'clip: peace; timeScale: -1; loop: infinite; clampWhenFinished: true');
   } 
 
-  else if (['Yes', 'yes'].includes(transcript)) {
-    console.log('yes');
+  else if (['Rock', 'rock', 'rock on', 'rock you'].includes(transcript)) {
+    console.log('rock');
     console.log(handModel);
     handModel.setAttribute('visible', true);
-    handModel.setAttribute('animation-mixer', 'clip: yes; timeScale: -1; loop: infinite; clampWhenFinished: true');
+    handModel.setAttribute('animation-mixer', 'clip: rock; timeScale: -1; loop: infinite; clampWhenFinished: true');
   } 
 }
