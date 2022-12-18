@@ -87,3 +87,54 @@ function handAnimations(transcript) {
     handModel.setAttribute('animation-mixer', 'clip: rock; timeScale: -1; loop: infinite; clampWhenFinished: true');
   } 
 }
+
+/* copy text to clipboard with eventlistener on copy button */
+let copyBtn = document.querySelector('#copy-btn');
+copyBtn.addEventListener('click', function(event) {
+  let copyText = document.querySelector('#text-box');
+  copyText.select();
+  document.execCommand("copy");
+  alert("Copied the text: " + copyText.value);
+});
+
+/* clear text to clipboard with eventlistener on clear button */
+let clearBtn = document.querySelector('#clear-btn');
+clearBtn.addEventListener('click', function(event) {
+  let clearText = document.querySelector('#text-box');
+  clearText.value = "";
+});
+
+
+/* save text to file with eventlistener on save button */
+// let saveBtn = document.querySelector('#save-btn');
+// saveBtn.addEventListener('click', function(event) {
+//   saveTextAsFile();
+// });
+
+/* save text to file */
+// function saveTextAsFile() {
+//   let textToWrite = document.getElementById("textbox").value;
+//   let textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
+//   let fileNameToSaveAs = "myNewFile.txt";
+
+//   let downloadLink = document.createElement("a");
+//   downloadLink.download = fileNameToSaveAs;
+//   downloadLink.innerHTML = "Download File";
+//   if (window.webkitURL != null)
+//   {
+//     // Chrome allows the link to be clicked
+//     // without actually adding it to the DOM.
+//     downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+//   }
+//   else
+//   {
+//     // Firefox requires the link to be added to the DOM
+//     // before it can be clicked.
+//     downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+//     downloadLink.onclick = destroyClickedElement;
+//     downloadLink.style.display = "none";
+//     document.body.appendChild(downloadLink);
+//   }
+
+//   downloadLink.click();
+// }

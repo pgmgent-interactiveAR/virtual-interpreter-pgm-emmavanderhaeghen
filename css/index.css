@@ -56,13 +56,12 @@ span {
 }
 
 button {
-  font-weight: 600;
+  margin-top: .5rem;
+  padding: .5rem 1rem;
+  color: white;
+  background-color: hsla(258, 29%, 62%, 0.8);
   border: none;
-  border-radius: 5rem;
-  margin: 0 1rem;
-  width: 4rem;
-  height: 4rem;
-  cursor: pointer;
+  border-radius: 1rem;
 }
 
 .primary-btn {
@@ -85,6 +84,14 @@ button:focus {
 
 .btn {
   position: relative;
+  font-weight: 600;
+  border: none;
+  border-radius: 5rem;
+  margin: 0 1rem;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+  padding: 0;
 }
 
 .cross {
